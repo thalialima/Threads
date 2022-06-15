@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigInteger;
 
 public class ActionButton implements ActionListener {
+
+    Thread threadCalc = new Thread();
 
     private JTextField first;
     private JTextField second;
@@ -17,15 +18,10 @@ public class ActionButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        long value1 = Long.parseLong(first.getText());
-        long value2 = Long.parseLong(second.getText());
-        BigInteger calc = new BigInteger("0");
+        TaskMultipliesNumber task = new TaskMultipliesNumber(first, second, result);
 
-        for (int i = 0; i < value1; i++) {
-            for (int j = 0; j < value2; j++) {
-                calc = calc.add(new BigInteger("1"));
-            }
-        }
-        result.setText(calc.toString());
+        Thread threadCalc = new Thread(task, "Calculadora");
+        threadCalc.start();
+
     }
 }
