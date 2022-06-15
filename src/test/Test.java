@@ -1,3 +1,8 @@
+package test;
+
+
+import classes.PrintString;
+
 public class Test {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("This is the main thread");

@@ -1,3 +1,5 @@
+package classes;
+
 public class PrintString extends Thread {
     @Override
     public void run() {
